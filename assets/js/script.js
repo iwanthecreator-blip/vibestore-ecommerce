@@ -5,22 +5,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("VibeStore System: Connected");
 
-    // A. CEK STATUS LOGIN & TAMPILAN PROFIL
+    // A. CEK STATUS LOGIN
     const savedName = localStorage.getItem("userName");
     const userRole = localStorage.getItem("userRole");
 
-    // Update nama di dashboard jika ada
+    // B. UPDATE NAMA DI DASHBOARD
+    // Kode ini akan mencari elemen nama di account.html atau admin.html
     const profileNameElement = document.querySelector('h4.fw-bold');
     if (savedName && profileNameElement) {
         profileNameElement.innerText = savedName;
     }
 
-    // B. LOGIKA NAVBAR ADAPTIF
-    // Jika sudah login, ubah tombol "Masuk" jadi "Akun Saya"
+    // C. LOGIKA NAVBAR ADAPTIF (PC)
     const loginBtnNav = document.querySelector('.btn-gold[href="auth.html"]');
     if (savedName && loginBtnNav) {
         loginBtnNav.innerText = "Akun Saya";
-        loginBtnNav.setAttribute('href', userRole === 'admin' ? 'admin.html' : 'account.html');
+        // Jika diklik, jalankan fungsi goToAccount bukannya ke auth.html
+        loginBtnNav.setAttribute('href', 'javascript:void(0)');
+        loginBtnNav.setAttribute('onclick', 'goToAccount()');
     }
 
     /* =========================================
@@ -37,8 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
             loginBtn.disabled = true;
 
             setTimeout(() => {
-                // Simpan Data ke Browser (LocalStorage)
-                localStorage.setItem("userName", email.split('@')[0]); // Ambil nama dari email
+                // Simpan nama (ambil teks sebelum @ di email)
+                const nameToSave = email.split('@')[0];
+                localStorage.setItem("userName", nameToSave);
                 
                 if (email === "admin@vibe.com") {
                     localStorage.setItem("userRole", "admin");
@@ -52,15 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /* =========================================
-       3. LOGIKA PRODUK & CHECKOUT (KONEKSI HARGA)
+       3. LOGIKA PRODUK & CHECKOUT
        ========================================= */
-    
-    // Fungsi pilih produk dari Index/Detail untuk dibawa ke Checkout
-    const buyButtons = document.querySelectorAll('.btn-action, .btn-vibe');
+    const buyButtons = document.querySelectorAll('.card-product a, .btn-vibe');
     buyButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Jika tombol 'Ajak Patungan' diklik
-            if (this.innerText.includes("Patungan")) {
+            if (this.innerText.includes("PATUNGAN")) {
                 localStorage.setItem("checkoutMode", "Patungan");
                 localStorage.setItem("checkoutPrice", "300000");
             } else {
@@ -70,36 +70,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Jalankan logika checkout hanya jika ada di halaman checkout
     if (window.location.pathname.includes('checkout.html')) {
-        const mode = localStorage.getItem("checkoutMode") || "Reguler";
         const price = localStorage.getItem("checkoutPrice") || "500000";
-        
         const priceElement = document.getElementById('totalAmount');
         if (priceElement) {
-            // Update harga awal berdasarkan pilihan dari halaman sebelumnya
-            priceElement.innerText = formatRupiah(parseInt(price) + 15000); // Harga + ongkir awal
+            priceElement.innerText = formatRupiah(parseInt(price) + 15000);
         }
     }
-
-    /* =========================================
-       4. LOGIKA ADMIN (KONTROL)
-       ========================================= */
-    const adminActionButtons = document.querySelectorAll('.btn-success');
-    adminActionButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const storeName = this.closest('tr').querySelector('td strong').innerText;
-            alert("Toko " + storeName + " telah disetujui untuk berjualan!");
-            this.closest('tr').style.opacity = '0.5';
-            this.disabled = true;
-        });
-    });
-
 });
 
 /* =========================================
-   5. FUNGSI PEMBANTU (UTILITIES)
+   4. FUNGSI NAVIGASI PINTAR (LINK SEMUA HALAMAN)
    ========================================= */
+
+// Fungsi ini yang membuat tombol Akun di HP dan PC "Cerdas"
+function goToAccount() {
+    const savedName = localStorage.getItem("userName");
+    const userRole = localStorage.getItem("userRole");
+
+    if (savedName) {
+        // Jika sudah login, lempar ke dashboard yang sesuai
+        if (userRole === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "account.html";
+        }
+    } else {
+        // Jika belum login, lempar ke halaman auth
+        window.location.href = "auth.html";
+    }
+}
+
+function logout() {
+    if (confirm("Apakah anda yakin ingin keluar?")) {
+        localStorage.clear();
+        window.location.href = "index.html";
+    }
+}
 
 function formatRupiah(angka) {
     return new Intl.NumberFormat('id-ID', {
@@ -107,19 +114,4 @@ function formatRupiah(angka) {
         currency: 'IDR',
         minimumFractionDigits: 0
     }).format(angka);
-}
-
-function logout() {
-    localStorage.clear();
-    alert("Kamu telah keluar.");
-    window.location.href = "index.html";
-}
-
-// Pasang fungsi logout ke tombol yang ada class 'text-danger'
-const logoutBtn = document.querySelector('.text-danger');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        logout();
-    });
 }
