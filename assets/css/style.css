@@ -18,35 +18,43 @@ body {
 }
 
 /* =========================================
-   2. NAVBAR & NAVIGATION
+   2. NAVBAR & MOBILE NAVIGATION (FIXED)
    ========================================= */
 .bg-vibe {
     background-color: var(--primary-vibe) !important;
 }
 
-.navbar-brand {
-    letter-spacing: 1px;
-}
-
 /* Navigasi Bawah (Mobile) */
 .mobile-nav {
-    z-index: 1050;
+    z-index: 9999 !important;
     height: 70px;
+    background-color: white;
+    border-top: 1px solid #dee2e6;
+    pointer-events: auto !important;
 }
 
-.mobile-nav .nav-item {
-    color: #666;
-    flex: 1;
+/* Memperbaiki agar item sejajar dan tidak full screen satu tombol saja */
+.mobile-nav .row {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    align-items: center;
+}
+
+.mobile-nav .col {
+    padding: 5px 0;
     cursor: pointer;
-    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: 0.2s;
+    text-decoration: none;
+    color: #666;
 }
 
 .mobile-nav .active {
-    color: var(--primary-vibe);
+    color: var(--primary-vibe) !important;
 }
 
 .circle-center {
@@ -57,10 +65,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -30px;
-    border: 4px solid white;
+    margin-top: -35px; /* Tombol melayang */
+    border: 5px solid white;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    color: white;
+    color: white !important;
 }
 
 /* =========================================
@@ -72,11 +80,6 @@ body {
     border: none;
     border-radius: 10px;
     transition: 0.3s;
-}
-
-.btn-vibe:hover {
-    background-color: var(--dark-vibe);
-    color: white;
 }
 
 .btn-gold {
@@ -92,24 +95,21 @@ body {
     border-radius: 20px;
     transition: all 0.3s ease;
     overflow: hidden;
+    background: white;
 }
 
 .text-vibe { color: var(--primary-vibe); }
 .text-gold { color: var(--gold-vibe); }
-.rounded-4 { border-radius: 1.2rem !important; }
-.small-text { font-size: 10px; font-weight: 600; }
+.small-text { font-size: 10px; font-weight: 600; margin-top: 2px; }
 
 /* =========================================
-   4. RESPONSIVE LOGIC (HP vs PC)
+   4. RESPONSIVE LOGIC
    ========================================= */
-
-/* Tampilan Khusus Mobile (HP) */
 @media (max-width: 768px) {
-    body { padding-bottom: 80px; } /* Agar konten tidak tertutup menu bawah */
+    body { padding-bottom: 80px; } /* Ruang untuk menu bawah */
     .hero-card h1 { font-size: 1.8rem; }
 }
 
-/* Tampilan Khusus Desktop (PC) */
 @media (min-width: 992px) {
     .card-product:hover {
         transform: translateY(-8px);
@@ -118,7 +118,7 @@ body {
 }
 
 /* =========================================
-   5. PAGE SPECIFIC (Index, Account, Nego)
+   5. PAGE SPECIFIC (Index, Nego, Auth)
    ========================================= */
 .hero-card {
     background: linear-gradient(135deg, var(--primary-vibe) 0%, var(--dark-vibe) 100%);
@@ -134,25 +134,9 @@ body {
     font-weight: 800;
 }
 
-.nav-pills .nav-link.active {
-    background-color: var(--primary-vibe) !important;
-    color: white !important;
-}
-
-.border-vibe { border: 2px dashed var(--primary-vibe) !important; }
-del { color: #ff4d4d; font-size: 0.9rem; }
-
-/* =========================================
-   6. AUTH PAGE (Login & Register)
-   ========================================= */
 body.auth-bg {
     background: linear-gradient(135deg, var(--primary-vibe) 0%, var(--dark-vibe) 100%);
     min-height: 100vh;
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: var(--primary-vibe);
-    box-shadow: 0 0 0 0.25rem rgba(45, 49, 250, 0.1);
 }
 
 .card.auth-card {
@@ -163,4 +147,10 @@ body.auth-bg {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Memperbaiki form input */
+.form-control:focus {
+    border-color: var(--primary-vibe);
+    box-shadow: 0 0 0 0.25rem rgba(45, 49, 250, 0.1);
 }
