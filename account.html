@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun Saya - VibeStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-vibe shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-arrow-left me-2"></i> Akun Saya</a>
+            <span class="text-gold fw-bold">Vibe Gold Member</span>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+            <div class="card-body p-4 text-center">
+                <div class="position-relative d-inline-block">
+                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2D31FA&color=fff&size=128" class="rounded-circle border border-4 border-white shadow" alt="Avatar">
+                    <span class="position-absolute bottom-0 end-0 bg-success border border-2 border-white rounded-circle p-2"></span>
+                </div>
+                <h4 class="fw-bold mt-3 mb-0">Budi Santoso</h4>
+                <p class="text-muted small">budi.santoso@email.com</p>
+                <div class="badge bg-vibe px-3 py-2 rounded-pill">Saldo: Rp 1.250.000</div>
+            </div>
+        </div>
+
+        <ul class="nav nav-pills nav-fill mb-4 bg-white p-1 rounded-pill shadow-sm" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-pill fw-bold" id="pills-buyer-tab" data-bs-toggle="pill" data-bs-target="#pills-buyer" type="button">Mode Pembeli</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill fw-bold" id="pills-seller-tab" data-bs-toggle="pill" data-bs-target="#pills-seller" type="button">Mode Penjual</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-buyer" role="tabpanel">
+                <div class="row g-3 text-center">
+                    <div class="col-3">
+                        <div class="p-3 bg-white rounded-4 shadow-sm">
+                            <i class="bi bi-wallet2 fs-3 text-vibe"></i>
+                            <div class="small mt-1">Bayar</div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="p-3 bg-white rounded-4 shadow-sm">
+                            <i class="bi bi-box-seam fs-3 text-vibe"></i>
+                            <div class="small mt-1">Dikemas</div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="p-3 bg-white rounded-4 shadow-sm">
+                            <i class="bi bi-truck fs-3 text-vibe"></i>
+                            <div class="small mt-1">Dikirim</div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="p-3 bg-white rounded-4 shadow-sm">
+                            <i class="bi bi-star fs-3 text-vibe"></i>
+                            <div class="small mt-1">Ulasan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold mt-4 mb-3">Aktivitas Patungan Aktif</h5>
+                <div class="card border-0 shadow-sm rounded-4 mb-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100" class="rounded-3" width="60">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-0 fw-bold">Headset Gaming Vibe X</h6>
+                                <div class="progress mt-2" style="height: 6px;">
+                                    <div class="progress-bar bg-warning" style="width: 66%"></div>
+                                </div>
+                                <small class="text-muted">Kurang 1 orang lagi!</small>
+                            </div>
+                            <button class="btn btn-sm btn-vibe rounded-pill text-white">Undang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-seller" role="tabpanel">
+                <div class="card border-0 shadow-sm rounded-4 mb-4 bg-vibe text-white">
+                    <div class="card-body p-4">
+                        <h6>Pendapatan Toko Ini Bulan</h6>
+                        <h2 class="fw-bold">Rp 15.420.000</h2>
+                        <hr>
+                        <div class="row text-center">
+                            <div class="col">
+                                <small class="d-block">Pesanan Baru</small>
+                                <span class="fw-bold">12</span>
+                            </div>
+                            <div class="col border-start">
+                                <small class="d-block">Siap Kirim</small>
+                                <span class="fw-bold">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-vibe w-100 p-3 rounded-4 fw-bold shadow-sm mb-3">
+                    <i class="bi bi-plus-circle me-2"></i> Tambah Produk Baru
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-2 mb-5">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <button class="btn btn-outline-danger w-100 rounded-pill fw-bold py-2" onclick="logout()">
+                    <i class="bi bi-box-arrow-left me-2"></i> Keluar dari Akun
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

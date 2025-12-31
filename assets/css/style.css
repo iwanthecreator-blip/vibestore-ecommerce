@@ -1,0 +1,166 @@
+/* =========================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary-vibe: #2D31FA;
+    --secondary-vibe: #5357ff;
+    --gold-vibe: #FFD700;
+    --dark-vibe: #1a1c7a;
+    --light-gray: #f8f9fa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   2. NAVBAR & NAVIGATION
+   ========================================= */
+.bg-vibe {
+    background-color: var(--primary-vibe) !important;
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+}
+
+/* Navigasi Bawah (Mobile) */
+.mobile-nav {
+    z-index: 1050;
+    height: 70px;
+}
+
+.mobile-nav .nav-item {
+    color: #666;
+    flex: 1;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-nav .active {
+    color: var(--primary-vibe);
+}
+
+.circle-center {
+    background-color: var(--primary-vibe);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* =========================================
+   3. COMPONENTS (Reusable)
+   ========================================= */
+.btn-vibe {
+    background-color: var(--primary-vibe);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-vibe:hover {
+    background-color: var(--dark-vibe);
+    color: white;
+}
+
+.btn-gold {
+    background-color: var(--gold-vibe);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+}
+
+.card-product {
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.text-vibe { color: var(--primary-vibe); }
+.text-gold { color: var(--gold-vibe); }
+.rounded-4 { border-radius: 1.2rem !important; }
+.small-text { font-size: 10px; font-weight: 600; }
+
+/* =========================================
+   4. RESPONSIVE LOGIC (HP vs PC)
+   ========================================= */
+
+/* Tampilan Khusus Mobile (HP) */
+@media (max-width: 768px) {
+    body { padding-bottom: 80px; } /* Agar konten tidak tertutup menu bawah */
+    .hero-card h1 { font-size: 1.8rem; }
+}
+
+/* Tampilan Khusus Desktop (PC) */
+@media (min-width: 992px) {
+    .card-product:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+}
+
+/* =========================================
+   5. PAGE SPECIFIC (Index, Account, Nego)
+   ========================================= */
+.hero-card {
+    background: linear-gradient(135deg, var(--primary-vibe) 0%, var(--dark-vibe) 100%);
+    border: none;
+}
+
+.badge-group-buy {
+    background: linear-gradient(45deg, var(--gold-vibe), #FFA500);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    color: #000;
+    font-weight: 800;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-vibe) !important;
+    color: white !important;
+}
+
+.border-vibe { border: 2px dashed var(--primary-vibe) !important; }
+del { color: #ff4d4d; font-size: 0.9rem; }
+
+/* =========================================
+   6. AUTH PAGE (Login & Register)
+   ========================================= */
+body.auth-bg {
+    background: linear-gradient(135deg, var(--primary-vibe) 0%, var(--dark-vibe) 100%);
+    min-height: 100vh;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-vibe);
+    box-shadow: 0 0 0 0.25rem rgba(45, 49, 250, 0.1);
+}
+
+.card.auth-card {
+    border-radius: 25px !important;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeStore - Belanja & Patungan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-vibe sticky-top py-2">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">VibeStore</a>
+            
+            <div class="d-flex flex-grow-1 mx-2 mx-lg-4">
+                <input class="form-control rounded-pill border-0 shadow-sm" type="search" placeholder="Cari di VibeStore...">
+            </div>
+
+            <div class="navbar-nav d-none d-lg-flex flex-row align-items-center">
+                <a class="nav-link px-3" href="#"><i class="bi bi-cart3 fs-4"></i></a>
+                <a class="nav-link px-3" href="#"><i class="bi bi-bell fs-4"></i></a>
+                <a class="btn btn-gold ms-2 px-4 rounded-pill" href="auth.html">Masuk</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-3 my-lg-4">
+        <div class="hero-card p-4 p-lg-5 text-white rounded-4 shadow">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-5 fw-bold mb-3">Belanja Murah Dengan <span class="text-gold">Patungan!</span></h1>
+                    <p class="lead mb-4">Ajak temanmu belanja bareng dan dapatkan harga spesial hanya hari ini.</p>
+                    <button class="btn btn-gold btn-lg px-5 shadow rounded-pill" onclick="startExplore()">Cek Produk</button>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center">
+                    <i class="bi bi-bag-heart-fill display-1 opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold mb-0">Rekomendasi</h4>
+            <a href="#" class="text-vibe text-decoration-none fw-600">Lihat Semua</a>
+        </div>
+
+        <div class="row g-2 g-lg-4" id="productGrid">
+            <div class="col-6 col-lg-3">
+                <div class="card card-product shadow-sm h-100 border-0">
+                    <a href="product-detail.html" class="text-decoration-none text-dark">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" class="card-img-top p-2 rounded-4" alt="Product">
+                        <div class="card-body p-2 p-lg-3">
+                            <span class="badge-group-buy mb-2">PATUNGAN 3 ORANG</span>
+                            <h6 class="card-title fw-bold text-truncate">Headset Gaming Vibe X</h6>
+                            <p class="text-vibe fw-bold mb-0">Rp 300.000</p>
+                            <small class="text-muted"><del>Rp 500.000</del></small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card card-product shadow-sm h-100 border-0">
+                    <a href="product-detail.html" class="text-decoration-none text-dark">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" class="card-img-top p-2 rounded-4" alt="Product">
+                        <div class="card-body p-2 p-lg-3">
+                            <span class="badge-group-buy mb-2">PATUNGAN 2 ORANG</span>
+                            <h6 class="card-title fw-bold text-truncate">Smartwatch Series Z</h6>
+                            <p class="text-vibe fw-bold mb-0">Rp 850.000</p>
+                            <small class="text-muted"><del>Rp 1.2M</del></small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mobile-nav fixed-bottom bg-white border-top d-lg-none shadow-lg">
+        <div class="d-flex justify-content-around text-center py-2">
+            <div class="nav-item active">
+                <i class="bi bi-house-door fs-4"></i>
+                <div class="small-text">Home</div>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-megaphone fs-4"></i>
+                <div class="small-text">Feed</div>
+            </div>
+            <div class="nav-item">
+                <div class="circle-center" onclick="window.location.href='index.html'">
+                    <i class="bi bi-plus-lg"></i>
+                </div>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-bell fs-4"></i>
+                <div class="small-text">Notif</div>
+            </div>
+            <div class="nav-item text-secondary" onclick="window.location.href='auth.html'">
+                <i class="bi bi-person fs-4"></i>
+                <div class="small-text">Akun</div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
