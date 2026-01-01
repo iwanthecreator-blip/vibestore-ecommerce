@@ -11,78 +11,126 @@
 </head>
 <body class="bg-light">
 
+    <nav class="navbar navbar-dark bg-vibe sticky-top py-2">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#">VibeAdmin <span class="badge bg-gold text-dark ms-2 small" style="font-size: 10px;">PRO</span></a>
+            <div class="d-flex align-items-center text-white">
+                <small class="me-3 d-none d-md-block" id="adminNameDisplay">Halo, Master Admin</small>
+                <i class="bi bi-person-circle fs-4"></i>
+            </div>
+        </div>
+    </nav>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 bg-white shadow-sm min-vh-100 p-3 d-none d-md-block">
-                <h4 class="fw-bold text-vibe mb-4">VibeAdmin</h4>
-                <ul class="nav flex-column gap-2">
-                    <li class="nav-item"><a href="#" class="nav-link active bg-vibe text-white rounded-3"><i class="bi bi-speedometer2 me-2"></i> Ringkasan</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-shop me-2"></i> Verifikasi Toko</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-people me-2"></i> Manajemen User</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-graph-up me-2"></i> Laporan Keuangan</a></li>
+                <ul class="nav flex-column gap-2 mt-3">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-vibe text-white rounded-3 shadow-sm"><i class="bi bi-speedometer2 me-2"></i> Ringkasan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-dark"><i class="bi bi-shop me-2"></i> Verifikasi Toko</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-dark"><i class="bi bi-people me-2"></i> User Manager</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-dark"><i class="bi bi-shield-check me-2"></i> Keamanan</a>
+                    </li>
                     <hr>
-                    <li class="nav-item"><a href="auth.html" class="nav-link text-danger"><i class="bi bi-box-arrow-left me-2"></i> Keluar</a></li>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" onclick="logout()" class="nav-link text-danger fw-bold"><i class="bi bi-box-arrow-left me-2"></i> Keluar</a>
+                    </li>
                 </ul>
             </div>
 
             <div class="col-md-10 p-4">
-                <h3 class="fw-bold mb-4">Dashboard Utama</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                    <div>
+                        <h4 class="fw-bold mb-0">Dashboard Ringkasan</h4>
+                        <p class="text-muted small mb-0">Kelola operasional VibeStore dalam satu panel.</p>
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm rounded-pill px-3 d-md-none" onclick="logout()">
+                        <i class="bi bi-box-arrow-left me-1"></i> Logout
+                    </button>
+                </div>
                 
                 <div class="row g-3 mb-4">
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
-                            <small class="text-muted">Total Transaksi</small>
-                            <h4 class="fw-bold mb-0">Rp 1.2M</h4>
-                            <span class="text-success small fw-bold">+12% Bulan ini</span>
+                    <div class="col-6 col-md-3">
+                        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100 border-start border-4 border-primary">
+                            <small class="text-muted d-block mb-1 fw-bold">TOTAL OMZET</small>
+                            <h5 class="fw-bold mb-0 text-vibe">Rp 1.2M</h5>
+                            <span class="text-success small" style="font-size: 10px;"><i class="bi bi-graph-up"></i> +12.5%</span>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
-                            <small class="text-muted">Pengguna Aktif</small>
-                            <h4 class="fw-bold mb-0">45.201</h4>
-                            <span class="text-vibe small fw-bold">User Online: 1.200</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
-                            <small class="text-muted">Toko Menunggu Verifikasi</small>
-                            <h4 class="fw-bold mb-0 text-danger">18</h4>
-                            <span class="small">Perlu segera disetujui</span>
+                    <div class="col-6 col-md-3">
+                        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100 border-start border-4 border-danger">
+                            <small class="text-muted d-block mb-1 fw-bold">VERIFIKASI PENDING</small>
+                            <h5 class="fw-bold mb-0 text-danger" id="countPending">2</h5>
+                            <span class="text-danger small" style="font-size: 10px;">Butuh Persetujuan</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-                    <div class="card-header bg-white p-3 fw-bold border-0">
-                        Persetujuan Penjual Baru
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                    <div class="card-header bg-white p-3 fw-bold border-0 d-flex justify-content-between align-items-center">
+                        <span><i class="bi bi-shop me-2 text-primary"></i>Antrean Toko Baru</span>
                     </div>
                     <div class="table-responsive">
-                        <table class="table align-middle mb-0">
-                            <thead class="bg-light">
+                        <table class="table align-middle mb-0 table-hover">
+                            <thead class="bg-light small text-muted">
                                 <tr>
-                                    <th>Nama Toko</th>
-                                    <th>Pemilik</th>
-                                    <th>Tanggal Daftar</th>
-                                    <th>Aksi</th>
+                                    <th class="ps-3">DETAIL TOKO</th>
+                                    <th class="text-end pe-3">AKSI</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>GamerZone ID</strong></td>
-                                    <td>Andi Wijaya</td>
-                                    <td>30 Des 2025</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-success rounded-pill px-3">Setuju</button>
-                                        <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Tolak</button>
+                            <tbody id="storeList">
+                                <tr id="row-toko-1">
+                                    <td class="ps-3">
+                                        <div class="fw-bold">GamerZone ID</div>
+                                        <small class="text-muted"><i class="bi bi-person me-1"></i>Andi Wijaya</small>
+                                    </td>
+                                    <td class="text-end pe-3">
+                                        <div class="d-flex justify-content-end gap-1">
+                                            <button class="btn btn-sm btn-success rounded-circle" onclick="handleStore('row-toko-1', 'GamerZone ID', 'disetujui')">
+                                                <i class="bi bi-check"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger rounded-circle" onclick="handleStore('row-toko-1', 'GamerZone ID', 'ditolak')">
+                                                <i class="bi bi-x"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><strong>Fashion Vibe</strong></td>
-                                    <td>Siska Putri</td>
-                                    <td>31 Des 2025</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-success rounded-pill px-3">Setuju</button>
-                                        <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Tolak</button>
+                                <tr id="row-toko-2">
+                                    <td class="ps-3">
+                                        <div class="fw-bold">Fashion Vibe</div>
+                                        <small class="text-muted"><i class="bi bi-person me-1"></i>Siska Putri</small>
+                                    </td>
+                                    <td class="text-end pe-3">
+                                        <button class="btn btn-sm btn-success rounded-circle" onclick="handleStore('row-toko-2', 'Fashion Vibe', 'disetujui')">
+                                            <i class="bi bi-check"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+                    <div class="card-header bg-white p-3 fw-bold border-0"><i class="bi bi-people me-2 text-primary"></i>User Manager</div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0 table-hover">
+                            <tbody id="userList">
+                                <tr id="user-row-1">
+                                    <td class="ps-3">
+                                        <div class="fw-bold">budi@gmail.com</div>
+                                        <span class="badge bg-success-subtle text-success rounded-pill" style="font-size: 9px;">Aktif</span>
+                                    </td>
+                                    <td class="text-end pe-3">
+                                        <button class="btn btn-sm btn-danger rounded-pill px-3" onclick="banUser('user-row-1', 'Budi')">
+                                            <i class="bi bi-slash-circle me-1"></i>Ban
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -93,5 +141,28 @@
         </div>
     </div>
 
+    <nav class="mobile-nav fixed-bottom bg-white border-top d-lg-none shadow-lg">
+        <div class="row g-0 text-center w-100">
+            <div class="col py-2 text-vibe">
+                <i class="bi bi-speedometer2 fs-4"></i>
+                <div class="small-text">Dash</div>
+            </div>
+            <div class="col py-2" onclick="alert('Menu Toko Segera Hadir')">
+                <i class="bi bi-shop fs-4 text-muted"></i>
+                <div class="small-text">Toko</div>
+            </div>
+            <div class="col py-2" onclick="alert('Menu Users Segera Hadir')">
+                <i class="bi bi-people fs-4 text-muted"></i>
+                <div class="small-text">Users</div>
+            </div>
+            <div class="col py-2" onclick="logout()">
+                <i class="bi bi-box-arrow-left fs-4 text-danger"></i>
+                <div class="small-text text-danger">Keluar</div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

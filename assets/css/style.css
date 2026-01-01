@@ -154,3 +154,42 @@ body.auth-bg {
     border-color: var(--primary-vibe);
     box-shadow: 0 0 0 0.25rem rgba(45, 49, 250, 0.1);
 }
+
+/* =========================================
+   7. ADMIN DASHBOARD SPECIFIC
+   ========================================= */
+
+/* Animasi baris tabel saat dihapus/disetujui */
+#storeList tr, #userList tr {
+    transition: all 0.5s ease;
+}
+
+/* Sidebar Admin (Desktop) */
+.nav-link.text-dark:hover {
+    background-color: #f1f2ff;
+    color: var(--primary-vibe) !important;
+    border-radius: 8px;
+}
+
+/* Tabel Admin yang lebih bersih */
+.table thead th {
+    border-top: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+}
+
+/* Badge Status */
+.badge.bg-gold {
+    background-color: var(--gold-vibe) !important;
+    color: #000;
+}
+
+/* Kustomisasi Scrollbar untuk Tabel HP */
+.table-responsive::-webkit-scrollbar {
+    height: 4px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
